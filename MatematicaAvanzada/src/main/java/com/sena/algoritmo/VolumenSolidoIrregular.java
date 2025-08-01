@@ -1,51 +1,62 @@
 package com.sena.algoritmo;
 
 import java.util.Scanner;
+import net.objecthunter.exp4j.Expression;
+import net.objecthunter.exp4j.ExpressionBuilder;
 
 public class VolumenSolidoIrregular {
 
-  public static void main(String[] args) {
-    // Se declaran las variables que se van a utilizar
-    Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-    // Se pide al usuario la función que describe la superficie del sólido
-    System.out.print("Introduzca la función que describe la superficie del sólido: ");
-    String funcion = sc.nextLine();
+        System.out.println("Seleccione el tipo de función para el área de la sección transversal:");
+        System.out.println("1. Constante (ejemplo: 25) - Sólido con sección igual en toda la altura");
+        System.out.println("2. Lineal (ejemplo: 2*x + 5) - Sólido que se ensancha o estrecha linealmente");
+        System.out.println("3. Cuadrática (ejemplo: x*x + 2*x + 1) - Sólido con variación cuadrática");
+        System.out.println("4. Personalizada (ingrese su propia función en x)");
+        System.out.print("Ingrese el número de opción: ");
+        int opcion = sc.nextInt();
+        sc.nextLine(); // Limpiar buffer
 
-    // Se pide al usuario la altura del sólido
-    System.out.print("Introduzca la altura del sólido: ");
-    float altura = sc.nextFloat();
+        String funcionEjemplo = switch (opcion) {
+            case 1 -> "25";
+            case 2 -> "2*x + 5";
+            case 3 -> "x*x + 2*x + 1";
+            default -> "";
+        };
 
-    // Se calcula el volumen del sólido
-    float volumen = calcularVolumen(funcion, altura);
+        if (!funcionEjemplo.isEmpty()) {
+            System.out.println("Ejemplo de función sugerida: " + funcionEjemplo);
+        }
+        System.out.print("Introduzca la función que describe el área de la sección transversal (en términos de x): ");
+        String funcion = sc.nextLine();
 
-    // Se muestra el resultado
-    System.out.println("Volumen: " + volumen);
-  }
+        System.out.print("Introduzca la altura del sólido (en cm): ");
+        float altura = sc.nextFloat();
 
-  private static float calcularVolumen(String funcion, float altura) {
-    // Se declaran las variables que se van a utilizar
-    float dx = 0.01f; // Paso de integración
-    float V = 0.0f; // Volumen
+        System.out.print("Introduzca la unidad de medida (ej: cm): ");
+        String unidad = sc.next();
 
-    // Se integra la función que describe la superficie del sólido
-    for (float x = 0.0f; x <= altura; x += dx) {
-      // Se calcula el área de la sección transversal
-      float area = f(x);
+        float volumen = calcularVolumen(funcion, altura);
 
-      // Se calcula el volumen de la sección transversal
-      float volumenSeccion = area * dx;
-
-      // Se suma el volumen de la sección transversal al volumen total
-      V += volumenSeccion;
+        System.out.println("Volumen (" + unidad + "³): " + volumen);
     }
 
-    return V;
-  }
+    private static float calcularVolumen(String funcion, float altura) {
+        float dx = 0.01f;
+        float V = 0.0f;
 
-  private static float f(float x) {
-    // Esta función es una función genérica que puede representar la superficie de cualquier sólido
-    // irregular
-    return x * x;
-  }
+        Expression expr = new ExpressionBuilder(funcion)
+                .variable("x")
+                .build();
+
+        for (float x = 0.0f; x <= altura; x += dx) {
+            expr.setVariable("x", x);
+            float area = (float) expr.evaluate();
+            float volumenSeccion = area * dx;
+            V += volumenSeccion;
+        }
+
+        return V;
+    }
 }

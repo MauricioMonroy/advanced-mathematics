@@ -23,61 +23,57 @@ public class FigurasGeometricasPlanas {
 
     // Se realiza el cálculo del área y el perímetro según la opción elegida
     switch (opcion) {
-      case 1 -> {
-        // Rectángulo
+      case 1 -> { // Rectángulo
         System.out.println("** Rectángulo **");
-        // Se pide al usuario la base y la altura del rectángulo
-        System.out.print("Introduzca la base: ");
-        int base = sc.nextInt();
-        System.out.print("Introduzca la altura: ");
-        int altura = sc.nextInt();
-        // Se calcula el área y el perímetro
+        System.out.print("Introduzca la base (en cm): ");
+        float base = sc.nextFloat();
+        System.out.print("Introduzca la altura (en cm): ");
+        float altura = sc.nextFloat();
         float area = base * altura;
-        int perimetro = 2 * base + 2 * altura;
-        // Se muestran los resultados
-        System.out.println("Área: " + area);
-        System.out.println("Perímetro: " + perimetro);
+        float perimetro = 2 * (base + altura);
+        System.out.println("Área (cm²): " + area);
+        System.out.println("Perímetro (cm): " + perimetro);
       }
-      case 2 -> {
-        // Cuadrado
+      case 2 -> { // Cuadrado
         System.out.println("** Cuadrado **");
-        // Se pide al usuario el lado del cuadrado
-        System.out.print("Introduzca el lado: ");
-        int lado = sc.nextInt();
-        // Se calcula el área y el perímetro
+        System.out.print("Introduzca el lado (en cm): ");
+        float lado = sc.nextFloat();
         float areaCuadrado = lado * lado;
-        int perimetroCuadrado = 4 * lado;
-        // Se muestran los resultados
-        System.out.println("Área: " + areaCuadrado);
-        System.out.println("Perímetro: " + perimetroCuadrado);
+        float perimetroCuadrado = 4 * lado;
+        System.out.println("Área (cm²): " + areaCuadrado);
+        System.out.println("Perímetro (cm): " + perimetroCuadrado);
       }
-      case 3 -> {
-        // Triángulo
+      case 3 -> { // Triángulo (base y altura, perímetro solo si es isósceles)
         System.out.println("** Triángulo **");
-        // Se pide al usuario la base y la altura del triángulo
-        System.out.print("Introduzca la base: ");
-        int baseTriangulo = sc.nextInt();
-        System.out.print("Introduzca la altura: ");
-        int alturaTriangulo = sc.nextInt();
-        // Se calcula el área y el perímetro
+        System.out.print("Introduzca la base (en cm): ");
+        float baseTriangulo = sc.nextFloat();
+        System.out.print("Introduzca la altura (en cm): ");
+        float alturaTriangulo = sc.nextFloat();
         float areaTriangulo = (baseTriangulo * alturaTriangulo) / 2;
-        int perimetroTriangulo = baseTriangulo + alturaTriangulo + baseTriangulo;
-        // Se muestran los resultados
-        System.out.println("Área: " + areaTriangulo);
-        System.out.println("Perímetro: " + perimetroTriangulo);
+        System.out.print("¿Desea calcular el perímetro? (s/n): ");
+        char calcPerimetro = sc.next().toLowerCase().charAt(0);
+        if (calcPerimetro == 's') {
+          System.out.print("Introduzca el lado 1 (en cm): ");
+          float lado1 = sc.nextFloat();
+          System.out.print("Introduzca el lado 2 (en cm): ");
+          float lado2 = sc.nextFloat();
+          System.out.print("Introduzca el lado 3 (en cm): ");
+          float lado3 = sc.nextFloat();
+          float perimetroTriangulo = lado1 + lado2 + lado3;
+          System.out.println("Área (cm²): " + areaTriangulo);
+          System.out.println("Perímetro (cm): " + perimetroTriangulo);
+        } else {
+          System.out.println("Área (cm²): " + areaTriangulo);
+        }
       }
-      case 4 -> {
-        // Círculo
+      case 4 -> { // Círculo
         System.out.println("** Círculo **");
-        // Se pide al usuario el radio del círculo
-        System.out.print("Introduzca el radio: ");
+        System.out.print("Introduzca el radio (en cm): ");
         float radio = sc.nextFloat();
-        // Se calcula el área y el perímetro
         float areaCirculo = (float) (Math.PI * Math.pow(radio, 2));
         float perimetroCirculo = (float) (2 * Math.PI * radio);
-        // Se muestran los resultados
-        System.out.println("Área: " + areaCirculo);
-        System.out.println("Perímetro: " + perimetroCirculo);
+        System.out.println("Área (cm²): " + areaCirculo);
+        System.out.println("Perímetro (cm): " + perimetroCirculo);
       }
       case 5 -> // Salir
       System.out.println("** Salida **");
