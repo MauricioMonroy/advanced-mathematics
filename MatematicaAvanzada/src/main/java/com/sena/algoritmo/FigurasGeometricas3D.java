@@ -28,84 +28,61 @@ public class FigurasGeometricas3D {
 
         // Se realiza el cálculo del área y el volumen según la opción elegida
         switch (opcion) {
-            case 1 -> {
-                // Tetraedro
+            case 1 -> { // Tetraedro
                 System.out.println("** Tetraedro **");
-                // Se pide al usuario la arista del tetraedro
-                System.out.print("Introduzca la arista: ");
+                System.out.print("Introduzca la arista (en cm): ");
                 float arista = sc.nextFloat();
-                // Se calcula el área y el volumen
                 float areaTetraedro = (float) (Math.sqrt(3) * Math.pow(arista, 2));
                 float volumenTetraedro = (float) ((Math.sqrt(2) / 12) * Math.pow(arista, 3));
-                // Se muestran los resultados
-                System.out.println("Área: " + areaTetraedro);
-                System.out.println("Volumen: " + volumenTetraedro);
+                System.out.println("Área (cm²): " + areaTetraedro);
+                System.out.println("Volumen (cm³): " + volumenTetraedro);
             }
             case 2 -> { // Cubo
                 System.out.println("** Cubo **");
-                // Se pide al usuario el lado del cubo
-                System.out.print("Introduzca el lado: ");
+                System.out.print("Introduzca el lado (en cm): ");
                 float lado = sc.nextFloat();
-                // Se calcula el área y el volumen
                 float areaCubo = (float) (6 * Math.pow(lado, 2));
                 float volumenCubo = (float) Math.pow(lado, 3);
-                // Se muestran los resultados
-                System.out.println("Área: " + areaCubo);
-                System.out.println("Volumen: " + volumenCubo);
+                System.out.println("Área (cm²): " + areaCubo);
+                System.out.println("Volumen (cm³): " + volumenCubo);
             }
-            case 3 -> {
-                // Octaedro
+            case 3 -> { // Octaedro
                 System.out.println("** Octaedro **");
-                // Se pide al usuario la arista del octaedro
-                System.out.print("Introduzca la arista: ");
+                System.out.print("Introduzca la arista (en cm): ");
                 float aristaOctaedro = sc.nextFloat();
-                // Se calcula el área y el volumen
                 float areaOctaedro = (float) (2 * Math.sqrt(2) * Math.pow(aristaOctaedro, 2));
                 float volumenOctaedro = (float) ((2 * Math.sqrt(2) / 3) * Math.pow(aristaOctaedro, 3));
-                // Se muestran los resultados
-                System.out.println("Área: " + areaOctaedro);
-                System.out.println("Volumen: " + volumenOctaedro);
+                System.out.println("Área (cm²): " + areaOctaedro);
+                System.out.println("Volumen (cm³): " + volumenOctaedro);
             }
             case 4 -> { // Dodecaedro
                 System.out.println("** Dodecaedro **");
-                // Se pide al usuario la arista del dodecaedro
-                System.out.print("Introduzca la arista: ");
+                System.out.print("Introduzca la arista (en cm): ");
                 float aristaDodecaedro = sc.nextFloat();
-                // Se calcula el área y el volumen
                 float areaDodecaedro = (float) (3 * Math.sqrt(3) * Math.pow(aristaDodecaedro, 2));
                 float volumenDodecaedro = (float) ((5 * Math.sqrt(2) / 12) * Math.pow(aristaDodecaedro, 3));
-                // Se muestran los resultados
-                System.out.println("Área: " + areaDodecaedro);
-                System.out.println("Volumen: " + volumenDodecaedro);
+                System.out.println("Área (cm²): " + areaDodecaedro);
+                System.out.println("Volumen (cm³): " + volumenDodecaedro);
             }
             case 5 -> { // Icosaedro
                 System.out.println("** Icosaedro **");
-                // Se pide al usuario la arista del icosaedro
-                System.out.print("Introduzca la arista: ");
+                System.out.print("Introduzca la arista (en cm): ");
                 float aristaIcosaedro = sc.nextFloat();
-                // Se calcula el área y el volumen
                 float areaIcosaedro = (float) (5 * Math.sqrt(3) * Math.pow(aristaIcosaedro, 2));
                 float volumenIcosaedro = (float) ((5 * Math.sqrt(5) / 12) * Math.pow(aristaIcosaedro, 3));
-                // Se muestran los resultados
-                System.out.println("Área: " + areaIcosaedro);
-                System.out.println("Volumen: " + volumenIcosaedro);
+                System.out.println("Área (cm²): " + areaIcosaedro);
+                System.out.println("Volumen (cm³): " + volumenIcosaedro);
             }
             case 6 -> { // Cilindro
                 System.out.println("** Cilindro **");
-                // Se pide al usuario el radio y la altura del cilindro
-                System.out.print("Introduzca el radio: ");
+                System.out.print("Introduzca el radio (en cm): ");
                 float radioCilindro = sc.nextFloat();
-                System.out.print("Introduzca la altura: ");
+                System.out.print("Introduzca la altura (en cm): ");
                 float alturaCilindro = sc.nextFloat();
-                // Se calcula el área y el volumen
-                float areaCilindro =
-                        (float)
-                                (2 * Math.PI * radioCilindro * alturaCilindro
-                                        + 2 * Math.PI * Math.pow(radioCilindro, 2));
+                float areaCilindro = (float) (2 * Math.PI * radioCilindro * alturaCilindro + 2 * Math.PI * Math.pow(radioCilindro, 2));
                 float volumenCilindro = (float) (Math.PI * Math.pow(radioCilindro, 2) * alturaCilindro);
-                // Se muestran los resultados
-                System.out.println("Área: " + areaCilindro);
-                System.out.println("Volumen: " + volumenCilindro);
+                System.out.println("Área (cm²): " + areaCilindro);
+                System.out.println("Volumen (cm³): " + volumenCilindro);
             }
             case 7 -> { // Cono
                 System.out.println("** Cono **");
